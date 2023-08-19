@@ -92,7 +92,9 @@ export const Sidebar = ({
             >
               <div className="flex items-center flex-1" title={route.label}>
                 <route.icon className={cn("h-5 w-5 mr-3", route.color)} />
-                &nbsp;
+                <span className="md:hidden">
+                {route.label}
+                </span>
               </div>
             </Link>
           ))}
