@@ -9,6 +9,8 @@ export const tools = [
     href: '/conversation',
     color: "text-violet-500",
     bgColor: "bg-violet-500/10",
+    description:"Ask a question! and get answers."
+
   },
   {
     label: 'Music Generation',
@@ -16,6 +18,8 @@ export const tools = [
     href: '/music',
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
+    description:"Describe a song you want to generate and voila! it will generate lyrics and music for you."
+
   },
   {
     label: 'Image Generation',
@@ -23,6 +27,7 @@ export const tools = [
     color: "text-pink-700",
     bgColor: "bg-pink-700/10",
     href: '/image',
+    description:"Describe an image you want to generate."
   },
   {
     label: 'Video Generation',
@@ -30,6 +35,8 @@ export const tools = [
     color: "text-orange-700",
     bgColor: "bg-orange-700/10",
     href: '/video',
+    description:"Describe a video you want to generate."
+
   },
   {
     label: 'Code Generation',
@@ -37,5 +44,6 @@ export const tools = [
     color: "text-green-700",
     bgColor: "bg-green-700/10",
     href: '/code',
+    description:"Describe a use case ( and an optional language) to generate code!"
   },
 ];
