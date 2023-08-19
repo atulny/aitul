@@ -13,7 +13,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className="mb-8 space-y-4">
+      <div className="mb-8 mt-4 space-y-4">
         <h2 className="text-2xl mt-6 md:text-4xl font-bold text-center">
           Explore and Experience the power of AI
         </h2>
