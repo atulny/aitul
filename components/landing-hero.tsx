@@ -13,12 +13,14 @@ export const LandingHero = () => {
     <div className="text-white font-bold py-36 text-center space-y-5">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
         <h1>AI Toolset for</h1>
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600">
           <TypewriterComponent
             options={{
               strings: [
                 "Chatbot.",
                 "Photo Generation.",
+                "Video Greneration.",
+                "Music Genertion.",
                 "Blog Writing.",
                 "Mail Writing."
               ],
@@ -28,7 +30,7 @@ export const LandingHero = () => {
           />
         </div>
       </div>
-      <div className="text-sm md:text-xl font-light text-zinc-400">
+      <div className="text-sm mt-60 md:text-xl font-light text-zinc-400" style={{marginTop:"7em"}}>
         Generate content using AI.
       </div>
       <div>
