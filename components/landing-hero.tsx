@@ -33,7 +33,7 @@ export const LandingHero = () => {
       </div>
       <div>
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
-          <Button variant="premium" className="md:text-lg p-4 md:p-6 rounded-full font-semibold">
+          <Button  className="md:text-lg p-4 md:p-6 rounded-full font-semibold">
             Start Generating
           </Button>
         </Link>
@@ -41,6 +41,15 @@ export const LandingHero = () => {
       {/* <div className="text-zinc-400 text-xs md:text-sm font-normal">
         No credit card required.
       </div> */}
+      <div style={{position: "fixed",
+          left: 0,
+          bottom: 0,
+          width: "100%",
+          textAlign:"center",
+          font:"small-caption;8px",
+          color:"grey",marginTop:"40px" }}>
+        Inspired and adapted from https://github.com/AntonioErdeljac/next13-ai-saas
+      </div>
     </div>
   );
 };
