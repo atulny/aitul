@@ -21,7 +21,7 @@ export default function HomePage() {
       </div>
       <div className="m-20 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {tools.map((tool) => (
-          <Card onClick={() => router.push(tool.href)} key={tool.href} className="p-8 border-black  flex items-center justify-between hover:shadow-md transition cursor-pointer">
+          <Card onClick={() => router.push(tool.href)} key={tool.href} className="p-8 pl-2 border-black  flex items-center justify-between hover:shadow-md transition cursor-pointer" style={{minWidth:"185px"}}>
             <div className="flex items-center gap-x-4">
               <div className={cn("p-2 w-fit rounded-md", tool.bgColor)}>
                 <tool.icon className={cn("w-8 h-8", tool.color)} />
