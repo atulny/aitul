@@ -74,7 +74,7 @@ export const Sidebar = ({
            marginTop: "10px"
         }}>
           <div className="inline-block relative h-8 w-8 mr-4 w-10" >
-            <Image fill alt="Logo" src="/logo.png" />
+            <Image fill alt="Logo" src="/logo1.png" />
           </div>
           <h1 className={cn("text-2xl font-bold inline-block align-top ", poppins.className)}>
             AItul
