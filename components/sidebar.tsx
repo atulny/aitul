@@ -65,7 +65,7 @@ export const Sidebar = ({
   const pathname = usePathname();
 
   return (
-    <div className="space-y-4 flex flex-col h-full bg-[#111827] text-white">
+    <div className="space-y-4 flex flex-col h-full bg-[#314057] text-white">
       <div className="px-3 relative">
         <Link href="/dashboard" className="relative items-center pl-3 mb-14" style={{
            overflow: "visible",
