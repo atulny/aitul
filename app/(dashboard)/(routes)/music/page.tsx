@@ -46,7 +46,7 @@ const MusicPage = () => {
       if (error?.response?.status === 403) {
         proModal.onOpen();
       } else {
-        toast.error("Something went wrong. This could be due to the reported issue of 'Elevated error rate for Streaming Serverless functions' by the hosting vendor. Please try again.");
+        toast.error(`Something went wrong. This could be due to the reported issue of 'Elevated error rate for Streaming Serverless functions' by the hosting vendor. Please try again. ${error?.response?.status} ${error?.response?.statusText}`);
       }
     } finally {
       router.refresh();
