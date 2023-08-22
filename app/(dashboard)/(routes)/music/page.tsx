@@ -98,6 +98,9 @@ const MusicPage = () => {
               Generate
             </Button>
           </form>
+          <div className="text-red-200 pl-5 text-sm">
+        Due to the time it takes to generate music you might see an error due to a time-out.
+      </div>
         </Form>
         {isLoading && (
           <div className="p-20">

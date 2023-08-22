@@ -12,6 +12,23 @@ export const tools = [
     description:"Ask a question! and get answers."
 
   },
+
+  {
+    label: 'Image Generation',
+    icon: ImageIcon,
+    color: "text-pink-700",
+    bgColor: "bg-pink-700/10",
+    href: '/image',
+    description:"Describe an image you want to generate."
+  },
+  {
+    label: 'Code Generation',
+    icon: Code,
+    color: "text-green-700",
+    bgColor: "bg-green-700/10",
+    href: '/code',
+    description:"Describe a use case ( and an optional language) to generate code!"
+  },
   {
     label: 'Music Generation',
     icon: Music,
@@ -22,14 +39,6 @@ export const tools = [
 
   },
   {
-    label: 'Image Generation',
-    icon: ImageIcon,
-    color: "text-pink-700",
-    bgColor: "bg-pink-700/10",
-    href: '/image',
-    description:"Describe an image you want to generate."
-  },
-  {
     label: 'Video Generation',
     icon: VideoIcon,
     color: "text-orange-700",
@@ -37,13 +46,5 @@ export const tools = [
     href: '/video',
     description:"Describe a video you want to generate."
 
-  },
-  {
-    label: 'Code Generation',
-    icon: Code,
-    color: "text-green-700",
-    bgColor: "bg-green-700/10",
-    href: '/code',
-    description:"Describe a use case ( and an optional language) to generate code!"
-  },
+  }
 ];
