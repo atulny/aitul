@@ -35,7 +35,7 @@ export const tools = [
     href: '/music',
     color: "text-emerald-500",
     bgColor: "bg-emerald-500/10",
-    description:"Describe a song you want to generate and voila! it will generate lyrics and music for you."
+    description:"Describe a song you want to generate and viola! it will generate lyrics and music for you."
 
   },
   {
