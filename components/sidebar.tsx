@@ -69,15 +69,17 @@ export const Sidebar = ({
       <div className="px-3 relative">
         <Link href="/dashboard" className="relative items-center pl-3 mb-14" style={{
            overflow: "visible",
-           width: "200px",
+           width: "400px",
            display: "block",
-           marginTop: "10px"
+           marginTop: "10px",
+           minHeight:"35px"
         }}>
           <div className="inline-block relative h-8 w-8 mr-4 w-10" >
             <Image fill alt="Logo" src="/logo1.png" />
           </div>
           <h1 className={cn("text-2xl font-bold inline-block align-top ", poppins.className)}>
-            AItul
+          AItul <span style={{paddingLeft:"20px",color:"DimGray"}}>:: AI Tools</span>
+
           </h1>
         </Link>
         <div className="space-y-1">
