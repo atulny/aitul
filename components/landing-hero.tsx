@@ -19,8 +19,8 @@ export const LandingHero = () => {
               strings: [
                 "Chatbot.",
                 "Photo Generation.",
-                "Video Greneration.",
-                "Music Genertion.",
+                "Video Generation.",
+                "Music Generation.",
                 "Blog Writing.",
                 "Mail Writing."
               ],
