@@ -3,6 +3,7 @@
 import TypewriterComponent from "typewriter-effect";
 import Link from "next/link";
 import { useAuth } from "@clerk/nextjs";
+import Image from "next/image"
 
 import { Button } from "@/components/ui/button";
 
@@ -12,8 +13,9 @@ export const LandingHero = () => {
   return (
     <div className="text-white font-bold py-36 text-center space-y-5">
       <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl space-y-5 font-extrabold">
-        <h1>AI Toolset for</h1>
-        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600">
+        <h1>AI Toolset</h1>
+        <div className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-600 text-base">
+         
           <TypewriterComponent
             options={{
               strings: [
@@ -26,11 +28,15 @@ export const LandingHero = () => {
               ],
               autoStart: true,
               loop: true,
+              skipAddStyles:true
             }}
           />
+           <div  style={{textAlign:"center", width:"500px", height:"300px",margin:"auto"}}>
+        <Image  width={500} height={500} alt="hero"  src="/ai-tools-hero.png"  />
+          </div>
         </div>
       </div>
-      <div className="text-sm mt-60 md:text-xl font-light text-zinc-400" style={{marginTop:"7em"}}>
+      <div className="text-sm mt-20 md:text-xl font-light text-zinc-400" style={{marginTop:"1em"}}>
         Generate content using AI.
       </div>
       <div>
