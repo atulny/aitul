@@ -19,7 +19,10 @@ export default function HomePage() {
         </h2>
 
       </div>
-      <div className="m-20 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+      <h2 className="bg-gray" style={{marginBottom:"2px",backgroundColor:"#efefef",borderBottom:"1px solid #ccc",paddingLeft:"20px"}}>Prompts</h2>
+
+      <div className="m-20 mt-5 grid grid-cols-1 gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+
         {tools.map((tool) => (
           <Card onClick={() => router.push(tool.href)} key={tool.href} className="p-8 pl-2 pb-2 border-black   items-center justify-between hover:shadow-md transition cursor-pointer hover:bg-sky-50" style={{minHeight:"200px",minWidth:"185px"}}>
             <div className="flex items-center gap-x-4">
@@ -37,6 +40,10 @@ export default function HomePage() {
           </Card>
         ))}
       </div>
+      <h2 className="bg-gray" style={{marginBottom:"2px",backgroundColor:"#efefef",borderBottom:"1px solid #ccc",paddingLeft:"20px"}}>
+        Transformation Tools
+        </h2>
+      coming soon ...
     </div>
   );
 }
