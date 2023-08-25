@@ -36,13 +36,11 @@ export const LandingHero = () => {
           </div>
         </div>
       </div>
-      <div className="text-sm mt-20 md:text-xl font-light text-zinc-400" style={{marginTop:"1em"}}>
-        Generate content using AI.
-      </div>
+   
       <div>
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button  className="md:text-lg p-4 md:p-6 rounded-full font-semibold">
-            Start Generating
+            Get Started
           </Button>
         </Link>
       </div>
