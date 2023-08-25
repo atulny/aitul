@@ -20,7 +20,7 @@ export const LandingNavbar = () => {
           <Image fill alt="Logo" src="/logo1.png" />
         </div>
         <h1 className={cn("text-2xl font-bold text-white", font.className)}>
-          AItul <span style={{paddingLeft:"20px",color:"#333"}}>:: AI Tools</span>
+          AItul <span style={{paddingLeft:"20px",color:"#333",textShadow: "1px 1px #666"}}>:: AI Tools</span>
         </h1>
       </Link>
       <div className="flex items-center gap-x-2">
