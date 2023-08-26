@@ -103,7 +103,7 @@ const VideoPage = () => {
         </Form>
         {isLoading && (
           <div className="p-20">
-            <Loader msg={"Please be patient while we figure out appropriate location and cast."}/>
+            <Loader msg={"Please be patient while we figure out appropriate location and cast!"}/>
           </div>
         )}
         {!video && !isLoading && (
