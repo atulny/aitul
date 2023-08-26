@@ -32,7 +32,7 @@ export const LandingHero = () => {
             }}
           />
            <div  style={{textAlign:"center", width:"400px", maxWidth:"98%",height:"300px",margin:"auto"}}>
-        <Image  width={400} height={500} alt="hero"  src="/ai-tools-hero1.png"  />
+        <Image  width={400} height={500} alt="hero"  src="/ai-tools-hero2.png"  />
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ export const LandingHero = () => {
       <div>
         <Link href={isSignedIn ? "/dashboard" : "/sign-up"}>
           <Button  className="md:text-lg p-4 md:p-6 rounded-full font-semibold">
-            Get Started: Generate content
+            Get Started: Generate Content
           </Button>
         </Link>
       </div>
