@@ -32,7 +32,7 @@ export const LandingHero = () => {
             }}
           />
            <div  style={{textAlign:"center", width:"400px", maxWidth:"98%",height:"300px",margin:"auto"}}>
-        <Image  width={400} height={500} alt="hero"  src="/ai-tools-hero.png"  />
+        <Image  width={400} height={500} alt="hero"  src="/ai-tools-hero1.png"  />
           </div>
         </div>
       </div>
