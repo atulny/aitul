@@ -40,12 +40,17 @@ export async function POST(
     if (sourceurl.includes("localhost")){
       sourceurl="http://73.80.105.96:3000"
     }
-    console.log(sourceurl)
-    const wh = await prismadb.webhookCache.create({
-      data: { 
-        typ:"video"
-      }
-    })
+    console.log(sourceurl) ;
+    let wh= null;
+    try{
+      wh = await prismadb.webhookCache.create({
+        data: { 
+          typ:"video"
+        }
+      })
+    } catch(e){
+      //pass
+    }
     let response = null;
     try{
       
@@ -69,11 +74,16 @@ export async function POST(
           console.log(`checking video cache:${i}`)
   
           i ++
-          const wh_data = await prismadb.webhookCache.findFirst({
-            where: { 
-              id:wh?.id||"undefined"
-            }
-          });
+          let wh_data = null;
+          try{
+            wh_data = await prismadb.webhookCache.findFirst({
+              where: { 
+                id:wh?.id||"undefined"
+              }
+            });
+          } catch(e){
+            //pass
+          }
           //console.log(`checking cache:${wh_data}`)
           if (wh_data?.cache){
             let response_data = JSON.parse(wh_data?.cache.toString() )|| {}
@@ -85,13 +95,17 @@ export async function POST(
         }
       }
       finally{
-        console.log(`video call completed ${response}`)        
+        console.log(`video call finally ${response}`)        
         //remove
-        await prismadb.webhookCache.delete({
-          where: { 
-            id:wh.id||"undefined"
-          }
-        });
+        try{
+          await prismadb.webhookCache.delete({
+            where: { 
+              id:wh?.id||"undefined"
+            }
+          });
+        } catch(e){
+          //pass
+        }
         //console.log(`delete cache`)
       }
       if (!response){

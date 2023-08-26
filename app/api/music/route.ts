@@ -41,11 +41,16 @@ export async function POST(
       sourceurl="http://73.80.105.96:3000"
     }
     console.log(sourceurl)
-    const wh = await prismadb.webhookCache.create({
-      data: { 
-        typ:"music"
-      }
-    })
+    var wh= null;
+    try{
+      wh = await prismadb.webhookCache.create({
+        data: { 
+          typ:"video"
+        }
+      })
+    } catch(e){
+      //pass
+    }
     let response = null
     try{
      response = await replicate.run(
@@ -66,11 +71,16 @@ export async function POST(
         console.log(`checking music cache:${i}`)
 
         i ++
-        const wh_data = await prismadb.webhookCache.findFirst({
-          where: { 
-            id:wh?.id||"undefined"
-          }
-        });
+        let wh_data = null;
+        try{
+          wh_data = await prismadb.webhookCache.findFirst({
+            where: { 
+              id:wh?.id||"undefined"
+            }
+          });
+        } catch(e){
+          //pass
+        }
         //console.log(`checking cache:${wh_data}`)
         if (wh_data?.cache){
           let response_data = JSON.parse(wh_data?.cache.toString() )|| {}
@@ -82,13 +92,17 @@ export async function POST(
       }
     }
     finally{
-      console.log(`music call completed ${response}`)        
+      console.log(`music call finally ${response}`)        
       //remove
-      await prismadb.webhookCache.delete({
-        where: { 
-          id:wh.id||"undefined"
-        }
-      });
+      try{
+        await prismadb.webhookCache.delete({
+          where: { 
+            id:wh?.id||"undefined"
+          }
+        });
+      } catch(e){
+        //pass
+      }
       //console.log(`delete cache`)
 
       

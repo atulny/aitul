@@ -20,14 +20,18 @@ export async function POST(req: NextRequest, res:NextResponse ) {
  // }
 
  // console.log(Buffer.concat(chunks));
- const wh = await prismadb.webhookCache.update({
-  where: { 
-    id:id
-  },
-  data: {
-    cache:b
-  }
-})
+ try{
+  const wh = await prismadb.webhookCache.update({
+    where: { 
+      id:id
+    },
+    data: {
+      cache:b
+    }
+  })
+ } catch(e){
+  //pass
+ }
   console.log(`webhook  ${id||"t"} ${body}`)
   //res.json({ message: `You submitted the following data: ${body}` })
 
