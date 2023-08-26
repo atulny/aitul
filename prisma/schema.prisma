@@ -24,3 +24,10 @@ model UserSubscription {
   stripePriceId          String?   @map(name: "stripe_price_id")
   stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
 }
+
+model WebhookCache {
+  id        String      @id @default(cuid())
+  cache     Bytes?
+  typ       String
+  createdAt DateTime @default(now())
+}

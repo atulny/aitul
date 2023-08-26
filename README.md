@@ -71,7 +71,9 @@ NEXT_PUBLIC_APP_URL="http://localhost:3000"
 Add MySQL Database (I used PlanetScale)
 
 ```shell
+npx prisma generate
 npx prisma db push
+npx prisma studio
 
 ```
 

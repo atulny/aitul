@@ -104,7 +104,7 @@ const MusicPage = () => {
         </Form>
         {isLoading && (
           <div className="p-20">
-            <Loader />
+            <Loader msg={"Please be patient while we figure out appropriate lyrics and music."}/>
           </div>
         )}
         {!music && !isLoading && (

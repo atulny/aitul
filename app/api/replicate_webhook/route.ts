@@ -1,10 +1,12 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server"
+import prismadb from "@/lib/prismadb";
 
 const urlre=new RegExp(/^(.*:)\/\/([A-Za-z0-9\-\.]+)(:[0-9]+)?(.*)$/)
 
 export async function POST(req: NextRequest, res:NextResponse ) {
-  const body = req.body;
+  const body = await req.arrayBuffer();
+  const b = Buffer.from(body)
   //check if there is an id
   let parts=req.url?.match(urlre)||[]
   let params=(parts[4]||"").replace(/^\?/,"").split("=")||[]
@@ -12,12 +14,20 @@ export async function POST(req: NextRequest, res:NextResponse ) {
   if (params.length){
     id=params[1]||""
   }
-  //const chunks = [];
- // for await (let chunk of body) {
+  const chunks = [];
+  //for await (let chunk of body) {
  //   chunks.push(chunk);
  // }
 
  // console.log(Buffer.concat(chunks));
+ const wh = await prismadb.webhookCache.update({
+  where: { 
+    id:id
+  },
+  data: {
+    cache:b
+  }
+})
   console.log(`webhook  ${id||"t"} ${body}`)
   //res.json({ message: `You submitted the following data: ${body}` })
 
