@@ -61,43 +61,42 @@ export async function POST(
         );
         //console.log(`finished run ${rr}`)
           
-    } finally{
-      console.log("video call completed")
-      if (!response){
-          let i: number = 0;
-          while (i< 10){
-            await sleep(i<2?500:i<5?5000:i<8?10000:20000)
-            console.log(`checking video cache:${i}`)
-
-            i ++
-            const wh_data = await prismadb.webhookCache.findFirst({
-              where: { 
-                id:wh?.id||"undefined"
-              }
-            });
-            //console.log(`checking cache:${wh_data}`)
-            if (wh_data?.cache){
-              let response_data = JSON.parse(wh_data?.cache.toString() )|| {}
-              response = response_data?.output
-              console.log(`got video cache:${response_data?.output}`)
-
-              break;
-            }  
-          }
-          //remove
-          await prismadb.webhookCache.delete({
+      } catch(e){
+        console.log("video error",e)
+        let i: number = 0;
+        while (i< 10){
+          await sleep(i<2?500:i<5?5000:i<8?10000:20000)
+          console.log(`checking video cache:${i}`)
+  
+          i ++
+          const wh_data = await prismadb.webhookCache.findFirst({
             where: { 
-              id:wh.id||"undefined"
+              id:wh?.id||"undefined"
             }
           });
-          //console.log(`delete cache`)
-
-          if (!response){
-            throw "unable to resolve video. Please try again"
-          }
+          //console.log(`checking cache:${wh_data}`)
+          if (wh_data?.cache){
+            let response_data = JSON.parse(wh_data?.cache.toString() )|| {}
+            response = response_data?.output
+            console.log(`got video cache:${response_data?.output}`)
+  
+            break;
+          }  
         }
-     }
-      
+      }
+      finally{
+        console.log(`video call completed ${response}`)        
+        //remove
+        await prismadb.webhookCache.delete({
+          where: { 
+            id:wh.id||"undefined"
+          }
+        });
+        //console.log(`delete cache`)
+      }
+      if (!response){
+        throw "unable to resolve video. Please try again"
+      }
     
     
     if (!isPro) {

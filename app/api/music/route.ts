@@ -58,42 +58,44 @@ export async function POST(
             webhook_events_filter: ["completed"], // optional
       }
     );
-    } finally{
-    console.log(`music call completed ${response}`)
-    if (!response){
-        let i: number = 0;
-        while (i< 10){
-          await sleep(i<2?500:i<5?5000:i<8?10000:20000)
-          console.log(`checking music cache:${i}`)
+    } catch(e){
+      console.log("music error",e)
+      let i: number = 0;
+      while (i< 10){
+        await sleep(i<2?500:i<5?5000:i<8?10000:20000)
+        console.log(`checking music cache:${i}`)
 
-          i ++
-          const wh_data = await prismadb.webhookCache.findFirst({
-            where: { 
-              id:wh?.id||"undefined"
-            }
-          });
-          //console.log(`checking cache:${wh_data}`)
-          if (wh_data?.cache){
-            let response_data = JSON.parse(wh_data?.cache.toString() )|| {}
-            response = response_data?.output
-            console.log(`got music cache:${response_data?.output}`)
-
-            break;
-          }  
-        }
-        //remove
-        await prismadb.webhookCache.delete({
+        i ++
+        const wh_data = await prismadb.webhookCache.findFirst({
           where: { 
-            id:wh.id||"undefined"
+            id:wh?.id||"undefined"
           }
         });
-        //console.log(`delete cache`)
+        //console.log(`checking cache:${wh_data}`)
+        if (wh_data?.cache){
+          let response_data = JSON.parse(wh_data?.cache.toString() )|| {}
+          response = response_data?.output
+          console.log(`got music cache:${response_data?.output}`)
 
-        if (!response){
-          throw "unable to resolve music. Please try again"
-        }
+          break;
+        }  
       }
-   }
+    }
+    finally{
+      console.log(`music call completed ${response}`)        
+      //remove
+      await prismadb.webhookCache.delete({
+        where: { 
+          id:wh.id||"undefined"
+        }
+      });
+      //console.log(`delete cache`)
+
+      
+    }
+    if (!response){
+      throw "unable to resolve music. Please try again"
+    }
     if (!isPro) {
       await incrementApiLimit();
     }
