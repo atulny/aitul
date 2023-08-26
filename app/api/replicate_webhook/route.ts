@@ -12,17 +12,15 @@ export async function POST(req: NextApiRequest, res:NextApiResponse ) {
   if (params.length){
     id=params[1]||""
   }
+  const chunks = [];
+  for await (let chunk of body) {
+    chunks.push(chunk);
+  }
 
-  console.log(`webhook  ${id||"t"}`)
-  res.status(200).json({ message: `You submitted the following data: ${body}` })
+  console.log(Buffer.concat(chunks));
+  console.log(`webhook  ${id||"t"} ${body}`)
+  //res.json({ message: `You submitted the following data: ${body}` })
 
-  //return new NextResponse("hello", { status: 200 })
+  return new NextResponse("hello", { status: 200 })
 };
 
- 
-export async function GET(req: NextApiRequest, res:NextApiResponse) {
-  console.log(`webhook  ${req.query?.id||"t"}`)
-  res.status(200).json({ message: `You submitted the following data` })
-
-  //return new NextResponse("hello", { status: 200 })
-};

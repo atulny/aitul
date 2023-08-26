@@ -33,7 +33,7 @@ export async function POST(
       return new NextResponse("Free trial has expired. Please upgrade to pro.", { status: 403 });
     }
     let parts = req.url.match(urlre)||[]
-    let sourceurl=`${parts[1]}//${parts[2]}${parts[3]||""}`
+    let sourceurl= "http://73.80.105.96:3000" //`${parts[1]}//${parts[2]}${parts[3]||""}`
     console.log(sourceurl)
     const response = await replicate.run(
       "anotherjesse/zeroscope-v2-xl:71996d331e8ede8ef7bd76eba9fae076d31792e4ddf4ad057779b443d6aea62f",
@@ -41,8 +41,8 @@ export async function POST(
         input: {
           prompt,
         },
-        webhook: `${sourceurl}/api/replicate-webhook`,
-  webhook_events_filter: ["completed"], // optional
+        //webhook: `${sourceurl}/api/replicate_webhook?id=123`,
+        //webhook_events_filter: ["completed"], // optional
       }
     );
      
