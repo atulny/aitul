@@ -31,8 +31,8 @@ export const LandingHero = () => {
               skipAddStyles:true
             }}
           />
-           <div  style={{textAlign:"center", width:"500px", height:"300px",margin:"auto"}}>
-        <Image  width={500} height={500} alt="hero"  src="/ai-tools-hero.png"  />
+           <div  style={{textAlign:"center", width:"400px", maxWidth:"98%",height:"300px",margin:"auto"}}>
+        <Image  width={400} height={500} alt="hero"  src="/ai-tools-hero.png"  />
           </div>
         </div>
       </div>
@@ -49,11 +49,12 @@ export const LandingHero = () => {
       </div> */}
       <div style={{position: "fixed",
           left: 0,
+          zIndex:2,
           bottom: 0,
           width: "100%",
           textAlign:"center",
           font:"small-caption;8px",
-          color:"grey",marginTop:"40px" }}>
+          color:"grey",marginTop:"20px" }}>
         Inspired and adapted from https://github.com/AntonioErdeljac/next13-ai-saas
       </div>
     </div>
