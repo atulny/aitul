@@ -27,7 +27,7 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { formSchema } from "./constants";
 import React from "react";
 import dynamic from "next/dynamic";
-import "@uiw/react-textarea-code-editor/dist.css";
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 
 /* const CodeEditor = dynamic(
   () => import("@uiw/react-textarea-code-editor").then((mod) => mod.default),
@@ -44,6 +44,7 @@ interface fileDict {
   [index: string]: filesObj;
 
 }
+type Monaco = typeof monaco 
 const files:fileDict = {
   "script.py": {
     name: "script.py",
@@ -89,12 +90,16 @@ const CodePage = () => {
   const [fileName, setFileName] = useState("script.py"); // change to "index.html"
   const editorRef = useRef(null);
   const file:filesObj= files[fileName];
+  /* const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: Monaco) => {
+    editorRef.current = editor;
+    monacoRef.current = monaco; */
   function handleEditorDidMount(editor:any, monaco:any) {
     editorRef.current = editor;
   }
   function getEditorValue() {
     //alert(editorRef.current.getValue());
   }
+
   return (
     <div>
       <Editor
