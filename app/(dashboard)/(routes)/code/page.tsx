@@ -29,6 +29,7 @@ const CodePage = () => {
   const router = useRouter();
   const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [opt, setOpt] = useState<String>("");
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,13 +39,19 @@ const CodePage = () => {
   });
 
   const isLoading = form.formState.isSubmitting;
-  
+  const setOptValue = (val:String)=>{
+    setOpt(val)
+  }
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const userMessage: ChatCompletionRequestMessage = { role: "user", content: values.prompt };
+      let prompt = values.prompt;
+      if ( opt =="review"){
+        prompt = "Review and provide recommendations:\n" + prompt
+      }
+      const userMessage: ChatCompletionRequestMessage = { role: "user", content: prompt };
       const newMessages = [...messages, userMessage];
       
-      const response = await axios.post('/api/code', { messages: newMessages });
+      const response = await axios.post('/api/code', { messages: newMessages, opt });
       setMessages((current) => [...current, userMessage, response.data]);
       
       form.reset();
@@ -90,7 +97,12 @@ const CodePage = () => {
                 name="prompt"
                 render={({ field }) => (
                   <FormItem className="col-span-12 lg:col-span-10">
+                     <select onChange= {(e) => {setOptValue(e.target.value)}}>
+                            <option selected value="code">Generate Code</option>
+                            <option  value="review">Review Code</option>
+                      </select>
                     <FormControl className="m-0 p-0">
+                   
 
                       <TextArea
                         className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"

@@ -8,5 +8,9 @@ const nextConfig = {
     ]
   },
 }
-
-module.exports = nextConfig
+const removeImports = require("next-remove-imports")();
+const remove_exports = removeImports({
+  experimental: { esmExternals: true }
+});
+const exp = Object.assign({},nextConfig,remove_exports)
+module.exports = exp
