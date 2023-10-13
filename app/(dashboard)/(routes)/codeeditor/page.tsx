@@ -49,7 +49,7 @@ const files:fileDict = {
   "script.py": {
     name: "script.py",
     language: "python",
-    value: "Here is some python text"
+    value: "# Here is some python code for test"
   },
   "index.html": {
     name: "index.html",
@@ -85,32 +85,66 @@ const CodePage = () => {
   const [code, setCode] = useState(
     `function add(a, b) {\n  return a + b;\n}`
   );
- 
+  const router = useRouter();
+  const proModal = useProModal();
+  const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
+  const [opt, setOpt] = useState<String>("");
+  const [loading, setLoading] = useState<boolean>(false);
+  type OnMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: Monaco) => void
 
   const [fileName, setFileName] = useState("script.py"); // change to "index.html"
-  const editorRef = useRef(null);
+  const editorRef:React.MutableRefObject<null>| undefined= useRef(null);
   const file:filesObj= files[fileName];
   /* const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor, monaco: Monaco) => {
     editorRef.current = editor;
     monacoRef.current = monaco; */
-  function handleEditorDidMount(editor:any, monaco:any) {
-    editorRef.current = editor;
-  }
+ 
+
+  function handleEditorDidMount(editor:monaco.editor.IStandaloneCodeEditor, monaco:any) {
+    if (editor != undefined){
+      // eslint-disable-next-line no-alert
+      //editorRef?.current = editor;
+    }
+  } 
+  const handleEditorValueChange = (value: string|undefined) => {
+    //console.log('event is ', event);
+    if (value != undefined){
+      file.value = value;
+    }
+  };
   function getEditorValue() {
     //alert(editorRef.current.getValue());
   }
+  const onSubmit =  async () => {
+   // eslint-disable-next-line no-alert
+   //file.value
 
+   setLoading(false);
+  }
   return (
     <div>
-      <Editor
-        height="100vh"
-        width="100%"
-        theme="vs-dark"
-        onMount={handleEditorDidMount}
-        path={file.name}
-        defaultLanguage={file.language}
-        defaultValue={file.value}
+      <Heading
+        title="Code Review"
+        description="Review and get recomendations."
+        icon={Code}
+        iconColor="text-green-700"
+        bgColor="bg-green-700/10"
       />
+      <div className="px-4 lg:px-8">
+
+        <Editor
+          height="60vh"
+          width="100%"
+          theme="vs-dark"
+          onMount={handleEditorDidMount}
+          path={file.name}
+          defaultLanguage={file.language}
+          defaultValue={file.value}
+        />
+        <Button className="col-span-12 lg:col-span-2 w-full" type="button" disabled={loading} onClick={async (ev)=>{setLoading(true);await onSubmit()}} size="icon">
+                Review
+              </Button>
+    </div>
     </div>
   );
 }
