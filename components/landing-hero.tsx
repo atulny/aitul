@@ -50,11 +50,21 @@ export const LandingHero = () => {
       <div style={{position: "fixed",
           left: 0,
           zIndex:2,
+          bottom: "25px",
+          width: "100%",
+          textAlign:"center",
+          font:"medium-caption;8px",
+          color:"yellow",marginTop:"20px" }}>
+       <a href="http://atulsharma.tech" target="_blank">About me</a>
+      </div>
+      <div style={{position: "fixed",
+          left: 0,
+          zIndex:2,
           bottom: 0,
           width: "100%",
           textAlign:"center",
           font:"small-caption;8px",
-          color:"grey",marginTop:"20px" }}>
+          color:"#666",marginTop:"20px" }}>
         Inspired and adapted from https://github.com/AntonioErdeljac/next13-ai-saas
       </div>
     </div>

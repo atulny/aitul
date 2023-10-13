@@ -46,5 +46,16 @@ export const tools = [
     href: '/video',
     description:"Describe a video you want to generate."
 
+  },
+  {
+    label: 'My Demographics',
+    icon: ImageIcon,
+    color: "text-orange-700",
+    bgColor: "bg-orange-700/10",
+    href: 'https://who-atulny.pythonanywhere.com/',
+    description:"Find out how an AI model describes you based on on you face"
+
   }
+  
+
 ];
