@@ -46,7 +46,15 @@ const CodePage = () => {
     try {
       let prompt = values.prompt;
       if ( opt =="review"){
-        prompt = "Review and provide recommendations:\n" + prompt
+        prompt = `our task is to review pull requests. Instructions:
+        - Do not give positive comments or compliments.
+        - Provide comments and suggestions ONLY if there is something to improve, otherwise return an empty message.
+        - Use the given description only for the overall context and only comment the code.
+        - IMPORTANT: NEVER suggest adding comments to the code.
+        
+        Review the following code "${
+          prompt
+          }`
       }
       const userMessage: ChatCompletionRequestMessage = { role: "user", content: prompt };
       const newMessages = [...messages, userMessage];

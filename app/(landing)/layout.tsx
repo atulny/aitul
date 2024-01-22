@@ -1,6 +1,6 @@
 const LandingLayout = ({
   children
-}: {
+}: { 
   children: React.ReactNode;
 }) => {
   return (

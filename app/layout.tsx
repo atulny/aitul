@@ -24,7 +24,7 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
 {/*         <CrispProvider />
- */}        <body className={font.className}>
+ */}    <body className={font.className}>
           <ToasterProvider />
           <ModalProvider />
           {children}
